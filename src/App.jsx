@@ -1,29 +1,3 @@
-// import React from "react";
-// import "./App.css";
-
-// const App = () => {
-//   // Loop through each row and column to create the chess board
-//   const squares = [];
-//   for (let row = 0; row < 8; row++) {
-//     for (let col = 0; col < 8; col++) {
-//       // Determine if the square should be white or black
-//       const isWhite = (row + col) % 2 === 0;
-
-//       // Add a div representing the square to the squares array
-//       squares.push(
-//         <div
-//           key={`${row}-${col}`}
-//           className={`square ${isWhite ? "white" : "black"}`}
-//         />
-//       );
-//     }
-//   }
-
-//   return <div className="chess-board">{squares}</div>;
-// };
-
-// export default App;
-
 import React, { useState } from "react";
 import "./App.css";
 
@@ -31,7 +5,11 @@ function App() {
   const [selectedBlock, setSelectedBlock] = useState(null);
 
   const handleClick = (block) => {
-    setSelectedBlock(block);
+    const [x, y] = block;
+    const isWhite = (x + y) % 2 === 0;
+    if (isWhite) {
+      setSelectedBlock(block);
+    }
   };
 
   const isDiagonal = (x1, y1, x2, y2) => {
